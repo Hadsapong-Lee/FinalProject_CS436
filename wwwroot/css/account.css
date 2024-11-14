@@ -1,0 +1,45 @@
+﻿.account-container {
+    background-image: url("../images/LoginBackground.jpg");
+    background-size:cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.account-box {
+    background-color: #ffffff;
+    padding: 38px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    max-width: 500px;
+    width: 100%;
+    opacity:.9;
+}
+
+.btn-success {
+    background: rgb(43,34,169);
+    background: linear-gradient(90deg, rgba(43,34,169,1) 0%, rgba(34,108,169,1) 65%, rgba(34,144,169,0.7911832946635731) 100%);
+    border: 0;
+
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.35);
+}
+
+.btn-success:hover {
+    background: rgb(34,144,169);
+}
+
+.submit-btn-wrap {
+    position: relative;
+}
+
+.submit-btn-wrap span {
+    color: #ffffff;
+    position: absolute;
+    left: 400px;
+    bottom: -2px;
+    font-size: 36px;
+}
