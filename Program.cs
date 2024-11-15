@@ -15,6 +15,8 @@ builder.Services.AddDefaultIdentity<FinalProjectUser>(options => options.SignIn.
     .AddEntityFrameworkStores<FinalProjectContext>();
 builder.Services.AddRazorPages();
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

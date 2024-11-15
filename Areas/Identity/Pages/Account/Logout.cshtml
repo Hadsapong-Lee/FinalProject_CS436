@@ -13,7 +13,7 @@
             if (User.Identity?.IsAuthenticated ?? false)
             {
                 <h2 class="text-center mb-4">LOGOUT</h2>
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <form class="form-inline text-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                     <button type="submit" class="text-decoration-none">Click here to logout</button>
                 </form>
             }

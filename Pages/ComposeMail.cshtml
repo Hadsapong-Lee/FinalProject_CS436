@@ -1,0 +1,62 @@
+﻿@page
+@model FinalProject.Pages.ComposeMailModel
+@{
+    ViewData["Title"] = "Sending Mail";
+}
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/compose.css" asp-append-version="true" />
+
+</head>
+    <body>
+    @*     <div class="email-container"> *@
+    @*         <h2 class="email-title">Sending Mail</h2> *@
+
+    @* <form class="email-form" method="post"> *@
+    @*     <label class="email-label" for="recipient">To:</label> *@
+    @*     <input class="email-input" type="text" id="recipient" name="EmailReceiver" required /> *@
+
+    @*     <label class="email-label" for="subject">Subject:</label> *@
+    @*     <input class="email-input" type="text" id="subject" name="EmailSubject" required /> *@
+
+    @*     <label class="email-label" for="message">Message:</label> *@
+    @*     <textarea class="email-input" id="message" name="EmailMessage" rows="4" required></textarea> *@
+
+    @*     <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;"> *@
+    @*         <button class="send-button" type="submit">Send</button> *@
+    @*         <a class="home-button" href="/Index">Home</a> *@
+    @*     </div> *@
+    @* </form> *@
+    @*     </div> *@
+
+    <div class="account-container">
+        <div class="account-box">
+            <span class="text-end">
+                <a asp-area="" asp-page="/Index" class="btn btn-secondary mt-2"><span style="font-size:24px; padding-bottom:6.5px;">&#8249</span></a>
+            </span>
+            <h2 class="text-center mb-4">WRITE EMAIL</h2>
+
+            <form id="account" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label" for="recipient">To:</label>
+                    <input class="form-control mt-2" type="text" id="recipient" name="EmailReceiver" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="subject">Subject:</label>
+                    <input class="form-control mt-2" type="text" id="subject" name="EmailSubject" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="message">Message:</label>
+                    <textarea class="form-control mt-2" id="message" name="EmailMessage" rows="4" required></textarea>
+                </div>
+                <div class="submit-btn-wrap text-end">
+                    <input type="submit" value="SEND" class="btn btn-success w-25 p-2 mb3" />
+                    <span>&#8250;</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    </body>
+
