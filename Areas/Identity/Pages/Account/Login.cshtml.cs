@@ -62,7 +62,6 @@ namespace FinalProject.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "Username is required.")]
-            [StringLength(255, ErrorMessage = "The Username must be between 1 to 255.", MinimumLength = 1)]
             public string Username { get; set; }
 
             [Required(ErrorMessage = "Password is required.")]
