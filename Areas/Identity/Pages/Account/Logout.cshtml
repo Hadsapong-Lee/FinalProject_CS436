@@ -1,21 +1,49 @@
 ﻿@page
 @model LogoutModel
+
 @{
-    ViewData["Title"] = "Log out";
+
+    ViewData["Title"] = "Logout";
+    Layout = "~/Pages/Shared/_AccountLayout.cshtml";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity?.IsAuthenticated ?? false)
-        {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
-            </form>
+<div class="account-container">
+    <div class="account-box">
+        @{
+            if (User.Identity?.IsAuthenticated ?? false)
+            {
+                <h2 class="text-center mb-4">LOGOUT</h2>
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="text-decoration-none">Click here to logout</button>
+                </form>
+            }
+            else
+            {
+                <h2 class="text-center mb-4">LOGOUT SUCCESFUL</h2>
+                <p class="text-center mb-2">You have successfully logged out of the application.</p>
+            }
         }
-        else
-        {
-            <p>You have successfully logged out of the application.</p>
-        }
-    }
-</header>
+    </div>
+</div>
+
+@* @page *@
+@* @model LogoutModel *@
+@* @{ *@
+@*     ViewData["Title"] = "Log out"; *@
+@* } *@
+
+@* <header> *@
+@*     <h1>@ViewData["Title"]</h1> *@
+@*     @{ *@
+@*         if (User.Identity?.IsAuthenticated ?? false) *@
+@*         { *@
+@*             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post"> *@
+@*                 <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button> *@
+@*             </form> *@
+@*         } *@
+@*         else *@
+@*         { *@
+@*             <p>You have successfully logged out of the application.</p> *@
+@*         } *@
+@*     } *@
+@* </header> *@
