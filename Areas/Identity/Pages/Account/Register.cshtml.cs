@@ -68,6 +68,10 @@ namespace FinalProject.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Username is required.")]
             public string Username { get; set; }
 
+            [Required(ErrorMessage = "Email is required.")]
+            [DataType(DataType.EmailAddress)]
+            public string Email { get; set; }
+
             [Required(ErrorMessage = "Password is required.")]
             [StringLength(40, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 8)]
             [DataType(DataType.Password)]
@@ -120,7 +124,7 @@ namespace FinalProject.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Username, returnUrl = returnUrl });
+                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else
                     {
