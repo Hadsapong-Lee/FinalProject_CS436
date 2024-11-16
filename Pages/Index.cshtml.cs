@@ -51,7 +51,7 @@ namespace FinalProject.Pages
                                 emailInfo.EmailSubject = reader.GetString(1);
                                 emailInfo.EmailMessage = reader.GetString(2);
                                 emailInfo.EmailDate = reader.GetDateTime(3).ToString();
-                                emailInfo.EmailIsRead = "" + reader.GetBoolean(4);
+                                emailInfo.EmailIsRead = "" + reader.GetInt32(4);
                                 emailInfo.EmailSender = reader.GetString(5);
                                 emailInfo.EmailReceiver = reader.GetString(6);
 
