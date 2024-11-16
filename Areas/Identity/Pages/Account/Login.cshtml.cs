@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using FinalProject.Pages.MailSystem;
 
 namespace FinalProject.Areas.Identity.Pages.Account
 {
@@ -103,7 +104,7 @@ namespace FinalProject.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    return RedirectToPage("/Index");
                 }
                 if (result.RequiresTwoFactor)
                 {

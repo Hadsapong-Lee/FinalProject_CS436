@@ -1,10 +1,8 @@
-﻿@page
+﻿@page "/index"
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
-
-<h1>@User.Identity.Name</h1>
 
 <table class="table">
     <thread>
@@ -37,7 +35,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <a class="float-end btn btn-primary btn-sm" href="/ComposeMail?Sender=@User.Identity.Name">Compose New Email</a>
+    <a class="float-end btn btn-primary btn-sm" href="MailSystem/ComposeMail?Sender=@User.Identity.Name">Compose New Email</a>
 }
 else{
     <p class="text-center mb-5 pt-5 text-muted lead">Please Log In To Continue</p>

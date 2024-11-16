@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
 
-namespace FinalProject.Pages
+namespace FinalProject.Pages.MailSystem
 {
     public class EmailSentModel : PageModel
     {

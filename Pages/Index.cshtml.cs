@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Identity;
+using System.Data;
 
 namespace FinalProject.Pages
 {
@@ -36,7 +37,9 @@ namespace FinalProject.Pages
                         username = User.Identity.Name;
                     }
 
-                    String sql = "SELECT * FROM emails WHERE emailreceiver='"+User.Identity.Name+"'";
+                    Console.WriteLine(username);
+
+                    String sql = $"SELECT * FROM emails WHERE emailreceiver=\'{username}\'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -48,7 +51,7 @@ namespace FinalProject.Pages
                                 emailInfo.EmailSubject = reader.GetString(1);
                                 emailInfo.EmailMessage = reader.GetString(2);
                                 emailInfo.EmailDate = reader.GetDateTime(3).ToString();
-                                emailInfo.EmailIsRead = "" + reader.GetInt32(4);
+                                emailInfo.EmailIsRead = "" + reader.GetBoolean(4);
                                 emailInfo.EmailSender = reader.GetString(5);
                                 emailInfo.EmailReceiver = reader.GetString(6);
 
