@@ -10,7 +10,7 @@
             <th>From</th>
             <th>Subject</th>
             <th>Date/Time</th>
-            <th>Delete</th>
+            <th></th>
         </tr>
     </thread>
 
@@ -23,10 +23,11 @@
                     @if (item.EmailIsRead.Equals("0")) {
                         <img src="images/yellow.gif" height="10pt"> 
                     } 
-                    <a href="MailSystem/ReadEmail?emailid=@item.EmailID">@item.EmailSubject</a></td>
+                    @item.EmailSubject</td>
                 <td>@item.EmailDate</td>
-                <td>
-                    <a class="btn btn-primary btn-sm" href="MailSystem/DeleteEmail?emailid=@item.EmailID">Delete</a>
+                <td class="text-end">
+                    <a class="btn btn-success btn-sm w-25" href="MailSystem/ReadEmail?emailid=@item.EmailID">View</a>
+                    <a class="btn btn-danger btn-sm w-25" href="MailSystem/DeleteEmail?emailid=@item.EmailID">Delete</a>
                 </td>
             </tr>
         }
