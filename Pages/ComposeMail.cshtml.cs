@@ -41,14 +41,14 @@ public class ComposeMailModel : PageModel
 
             DateTime thaiTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, thaiTimeZone);
 
-            string insertSql = "INSERT INTO emails (emailsubject, emailmessage, emaildate, emailisread, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, @ThaiTime, 0, @Username, @EmailReceiver)";
+            string sql = "INSERT INTO emails (emailsubject, emailmessage, emaildate, emailisread, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, @EmailDate, 0, @EmailSender, @EmailReceiver)";
 
-            using (SqlCommand insertCommand = new SqlCommand(insertSql, connection))
+            using (SqlCommand insertCommand = new SqlCommand(sql, connection))
             {
                 insertCommand.Parameters.AddWithValue("@EmailSubject", EmailSubject);
                 insertCommand.Parameters.AddWithValue("@EmailMessage", EmailMessage);
-                insertCommand.Parameters.AddWithValue("@ThaiTime", thaiTime);
-                insertCommand.Parameters.AddWithValue("@Username", username);
+                insertCommand.Parameters.AddWithValue("@EmailDate", thaiTime);
+                insertCommand.Parameters.AddWithValue("@EmailSender", username);
                 insertCommand.Parameters.AddWithValue("@EmailReceiver", EmailReceiver);
 
                 insertCommand.ExecuteNonQuery();

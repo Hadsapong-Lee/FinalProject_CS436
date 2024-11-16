@@ -10,11 +10,11 @@
 <div class="account-container">
     <div class="account-box">
         @{
-            if (User.Identity?.IsAuthenticated ?? false)
+            if (User.Identity?.IsAuthenticated ?? true)
             {
-                <h2 class="text-center mb-4">LOGOUT</h2>
+                <h2 class="text-center mb-5"><span class="h1 text-warning">ERROR OCCUR!</span><br/> <span class="text-black-50" style="line-height:1.8em">Please Logout</span></h2>
                 <form class="form-inline text-center" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                    <button type="submit" class="text-decoration-none">Click here to logout</button>
+                    <button type="submit" class="text-decoration-none btn btn-primary">Click here to logout</button>
                 </form>
             }
             else
