@@ -29,7 +29,6 @@ namespace FinalProject.Pages.MailSystem
         {
             try
             {
-                TimeZoneInfo thaiTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
 
                 string connectionString = "Server=tcp:datapj.database.windows.net,1433;Initial Catalog=datapj;Persist Security Info=False;User ID=fproject;Password=Final12Proj3ct;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
@@ -39,15 +38,12 @@ namespace FinalProject.Pages.MailSystem
 
                     string username = User.Identity.Name ?? "";
 
-                    DateTime dateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, thaiTimeZone); ;
-
-                    string sql = "INSERT INTO emails (emailsubject, emailmessage, emaildate, emailisread, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, @EmailDate, 0, @EmailSender, @EmailReceiver)";
+                    string sql = "INSERT INTO emails (emailsubject, emailmessage, emailisread, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, 0, @EmailSender, @EmailReceiver)";
 
                     using (SqlCommand insertCommand = new SqlCommand(sql, connection))
                     {
                         insertCommand.Parameters.AddWithValue("@EmailSubject", EmailSubject);
                         insertCommand.Parameters.AddWithValue("@EmailMessage", EmailMessage);
-                        insertCommand.Parameters.AddWithValue("@EmailDate", dateTime);
                         insertCommand.Parameters.AddWithValue("@EmailSender", username);
                         insertCommand.Parameters.AddWithValue("@EmailReceiver", EmailReceiver);
 

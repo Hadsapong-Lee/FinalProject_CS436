@@ -68,6 +68,10 @@ namespace FinalProject.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Username is required.")]
             public string Username { get; set; }
 
+            [Required(ErrorMessage = "Email address is required.")]
+            [DataType(DataType.EmailAddress)]
+            public string Email { get; set; }
+
             [Required(ErrorMessage = "Password is required.")]
             [StringLength(40, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 8)]
             [DataType(DataType.Password)]
@@ -99,7 +103,7 @@ namespace FinalProject.Areas.Identity.Pages.Account
                 user.MobilePhone = Input.MobilePhone;
 
                 await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Username, CancellationToken.None);
+                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
