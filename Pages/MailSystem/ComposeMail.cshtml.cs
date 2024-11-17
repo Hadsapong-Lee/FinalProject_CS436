@@ -19,12 +19,24 @@ namespace FinalProject.Pages.MailSystem
         public string EmailSender { get; set; }
 
         [BindProperty]
-        [Required(ErrorMessage = "Please type an email receiver")]
         public string EmailReceiver { get; set; }
+
+
+        [BindProperty]
+        public string UserSender { get; set; }
+
+        [BindProperty]
+        public string UserReceiver { get; set; }
 
 
         public IActionResult OnGet()
         {
+            string connectionString = "Server=tcp:datapj.database.windows.net,1433;Initial Catalog=datapj;Persist Security Info=False;User ID=fproject;Password=Final12Proj3ct;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+            }
             return Page();
         }
 
@@ -42,7 +54,7 @@ namespace FinalProject.Pages.MailSystem
                     string username = User.Identity.Name ?? "";
                     DateTime EmailDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, thaiTimeZone);
 
-                    string sql = "INSERT INTO emails (emailsubject, emailmessage, emailisread, emaildate, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, 0, @EmailDate, @EmailSender, @EmailReceiver)";
+                    string sql = "INSERT INTO emails (emailsubject, emailmessage, emailisread, emaildate, emailsender, emailreceiver, usersender, userreceiver) VALUES (@EmailSubject, @EmailMessage, 0, @EmailDate, @EmailSender, @EmailReceiver, @UserSender, @UserReceiver)";
 
                     using (SqlCommand insertCommand = new SqlCommand(sql, connection))
                     {

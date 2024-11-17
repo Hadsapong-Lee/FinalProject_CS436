@@ -6,7 +6,7 @@
 
 <head>
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/compose.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/emails.css" asp-append-version="true" />
 
 </head>
     <body>
@@ -46,7 +46,7 @@
                 <div class="mb-3">
                     <label asp-for="EmailReceiver" class="form-label">To:</label>
                     <input asp-for="EmailReceiver" class="form-control mt-2" placeholder="e.g. receiver@example.com" required />
-                    <span asp-validation-for="EmailReceiver" class="text-danger"></span>
+                    <span asp-validation-for="EmailReceiver" class="text-warning"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="EmailSubject" class="form-label">Subject:</label>
