@@ -37,11 +37,12 @@
             </span>
             <h2 class="text-center mb-4">WRITE EMAIL</h2>
 
+            <div class="mb-3">
+                <label class="form-label" for="EmailSender">From:</label>
+                <input class="form-control mt-2" type="text" id="recipient" name="EmailSender" readonly />
+            </div>
+
             <form id="account" method="post">
-                <div class="mb-3">
-                    <label class="form-label" for="EmailSender">From:</label>
-                    <input class="form-control mt-2" type="text" id="recipient" name="EmailSender" readonly/>
-                </div>
                 <div class="mb-3">
                     <label class="form-label" for="recipient">To:</label>
                     <input class="form-control mt-2" type="text" id="recipient" name="EmailReceiver" required />

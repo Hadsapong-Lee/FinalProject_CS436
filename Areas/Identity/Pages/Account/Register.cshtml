@@ -12,56 +12,46 @@
         <h2 class="text-center mb-4">REGISTER</h2>
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             <div class="mb-3">
                 <label asp-for="Input.FirstName" class="form-label">First Name</label>
                 <input asp-for="Input.FirstName" class="form-control" placeholder="John" />
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
-
             <div class="mb-3">
                 <label asp-for="Input.LastName" class="form-label">Last Name</label>
                 <input asp-for="Input.LastName" class="form-control" placeholder="Jones" />
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
-            
+            <div class="mb-3">
+                <label asp-for="Input.MobilePhone" class="form-label">Mobile Phone</label>
+                <input asp-for="Input.MobilePhone" class="form-control" placeholder="123-456-7890" />
+                <span asp-validation-for="Input.MobilePhone" class="text-danger"></span>
+            </div>
             <div class="mb-3">
                 <label asp-for="Input.Username" class="form-label"></label>
                 <input asp-for="Input.Username" class="form-control" placeholder="Username" />
                 <span asp-validation-for="Input.Username" class="text-danger"></span>
             </div>
-
-            <div class="mb-3">
-                <label asp-for="Input.Email" class="form-label"></label>
-                <input asp-for="Input.Email" class="form-control" placeholder="Email Address" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-
             <div class="mb-3">
                 <label asp-for="Input.Password" class="form-label"></label>
                 <input asp-for="Input.Password" class="form-control" placeholder="************" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
-
             <div class="mb-3">
                 <label asp-for="Input.ConfirmPassword" class="form-label"></label>
                 <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="************" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-
             <div class="submit-btn-wrap">
                 <input type="submit" value="CONTINUE" class="btn btn-success w-100 p-2" />
                 <span>&#8250;</span>
             </div>
-
             <p class="text-center mt-2">
                 Already have an account? <a class="text-decoration-none" asp-area="Identity" asp-page="/Account/Login">Login</a>
             </p>
-
             <div class="text-center">
                 <a asp-area="" asp-page="/Index" class="text-decoration-none mt-3">Back</a>
             </div>
-
         </form>
     </div>
 </div>

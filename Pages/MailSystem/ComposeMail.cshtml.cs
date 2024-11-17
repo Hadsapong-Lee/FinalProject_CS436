@@ -39,7 +39,7 @@ namespace FinalProject.Pages.MailSystem
 
                     string username = User.Identity.Name ?? "";
 
-                    DateTime dateTime = DateTime.Now;
+                    DateTime dateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, thaiTimeZone); ;
 
                     string sql = "INSERT INTO emails (emailsubject, emailmessage, emaildate, emailisread, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, @EmailDate, 0, @EmailSender, @EmailReceiver)";
 
@@ -48,7 +48,7 @@ namespace FinalProject.Pages.MailSystem
                         insertCommand.Parameters.AddWithValue("@EmailSubject", EmailSubject);
                         insertCommand.Parameters.AddWithValue("@EmailMessage", EmailMessage);
                         insertCommand.Parameters.AddWithValue("@EmailDate", dateTime);
-                        insertCommand.Parameters.AddWithValue("@EmailSender", EmailSender);
+                        insertCommand.Parameters.AddWithValue("@EmailSender", username);
                         insertCommand.Parameters.AddWithValue("@EmailReceiver", EmailReceiver);
 
                         insertCommand.ExecuteNonQuery();
