@@ -38,22 +38,23 @@
             <h2 class="text-center mb-4">WRITE EMAIL</h2>
 
             <div class="mb-3">
-                <label class="form-label" for="EmailSender">From:</label>
-                <input class="form-control mt-2" type="text" id="recipient" name="EmailSender" readonly />
+                <label class="form-label">From:</label>
+                <input class="form-control mt-2" type="text" readonly />
             </div>
 
             <form id="account" method="post">
                 <div class="mb-3">
-                    <label class="form-label" for="recipient">To:</label>
-                    <input class="form-control mt-2" type="text" id="recipient" name="EmailReceiver" required />
+                    <label asp-for="EmailReceiver" class="form-label">To:</label>
+                    <input asp-for="EmailReceiver" class="form-control mt-2" placeholder="e.g. receiver@example.com" required />
+                    <span asp-validation-for="EmailReceiver" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="subject">Subject:</label>
-                    <input class="form-control mt-2" type="text" id="subject" name="EmailSubject" required />
+                    <label asp-for="EmailSubject" class="form-label">Subject:</label>
+                    <input asp-for="EmailSubject" class="form-control mt-2" required />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="message">Message:</label>
-                    <textarea class="form-control mt-2" id="message" name="EmailMessage" rows="4" required></textarea>
+                    <label asp-for="EmailMessage" class ="form-label">Message:</label>
+                    <textarea asp-for="EmailMessage" class ="form-control mt-2" required></textarea>
                 </div>
                 <div class="submit-btn-wrap text-end">
                     <input type="submit" value="SEND" class="btn btn-success w-25 p-2 mb3" />

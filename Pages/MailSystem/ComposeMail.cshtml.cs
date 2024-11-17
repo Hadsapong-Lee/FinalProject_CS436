@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -7,6 +8,7 @@ namespace FinalProject.Pages.MailSystem
 {
     public class ComposeMailModel : PageModel
     {
+
         [BindProperty]
         public string EmailSubject { get; set; }
 
@@ -17,6 +19,7 @@ namespace FinalProject.Pages.MailSystem
         public string EmailSender { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Please type an email receiver")]
         public string EmailReceiver { get; set; }
 
 
@@ -29,7 +32,7 @@ namespace FinalProject.Pages.MailSystem
         {
             try
             {
-
+                TimeZoneInfo thaiTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
                 string connectionString = "Server=tcp:datapj.database.windows.net,1433;Initial Catalog=datapj;Persist Security Info=False;User ID=fproject;Password=Final12Proj3ct;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -37,13 +40,15 @@ namespace FinalProject.Pages.MailSystem
                     connection.Open();
 
                     string username = User.Identity.Name ?? "";
+                    DateTime EmailDate = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, thaiTimeZone);
 
-                    string sql = "INSERT INTO emails (emailsubject, emailmessage, emailisread, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, 0, @EmailSender, @EmailReceiver)";
+                    string sql = "INSERT INTO emails (emailsubject, emailmessage, emailisread, emaildate, emailsender, emailreceiver) VALUES (@EmailSubject, @EmailMessage, 0, @EmailDate, @EmailSender, @EmailReceiver)";
 
                     using (SqlCommand insertCommand = new SqlCommand(sql, connection))
                     {
                         insertCommand.Parameters.AddWithValue("@EmailSubject", EmailSubject);
                         insertCommand.Parameters.AddWithValue("@EmailMessage", EmailMessage);
+                        insertCommand.Parameters.AddWithValue("@EmailDate", EmailDate);
                         insertCommand.Parameters.AddWithValue("@EmailSender", username);
                         insertCommand.Parameters.AddWithValue("@EmailReceiver", EmailReceiver);
 
