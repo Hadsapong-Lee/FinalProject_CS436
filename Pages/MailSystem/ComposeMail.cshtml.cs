@@ -19,6 +19,7 @@ namespace FinalProject.Pages.MailSystem
         public string EmailSender { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Email receiver can\'t be empty.")]
         public string EmailReceiver { get; set; }
 
         public IActionResult OnGet()

@@ -8,24 +8,27 @@
 
 .account-box {
     background-color: #ffffff;
-    padding: 38px;
+    padding: 0;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
     max-width: 900px;
     width: 100%;
     opacity: .9;
 }
 
-.btn-success {
-    background: rgb(43,34,169);
-    background: linear-gradient(90deg, rgba(43,34,169,1) 0%, rgba(34,108,169,1) 65%, rgba(34,144,169,0.7911832946635731) 100%);
-    border: 0;
-    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.35);
+.btn-primary {
+    background: #267DFF;
+    /*    background: linear-gradient(90deg, rgba(43,34,169,1) 0%, rgba(34,108,169,1) 65%, rgba(34,144,169,0.7911832946635731) 100%);*/
+    border: 0
 }
 
-    .btn-success:hover {
-        background: rgb(34,144,169);
-    }
+.custom-width-for-btn{
+    width:14%;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, rgba(43,34,169,1) 0%, rgba(34,108,169,1) 65%, rgba(34,144,169,0.7911832946635731) 100%);
+}
 
 .submit-btn-wrap {
     position: relative;
@@ -46,15 +49,61 @@ textarea {
 
 .btn-secondary {
     position:absolute;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     display: flex;
     border-radius:50%;
     justify-content: center;
     align-items: center;
-    opacity : 0.50;
 }
 
-.btn-secondary:hover {
-    opacity: 1;
+.input-group-text {
+    width: 6em;
+    background-color: #fff;
+    border-right: 0;
+}
+
+.prime-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.top-label {
+    background-color: #FFF8D2;
+}
+
+.prime-label {
+    padding: 20px 38px 20px 38px;
+    background-color: #D9D9D9;
+    border-radius: 0 0 10px 10px;
+}
+
+.sub-header{
+    padding: 10px;
+}
+
+.message-panel {
+    background-color: #FFF8D2;
+    border-radius: 0 0 10px 10px;
+    border: 0;
+}
+
+textarea[readonly] {
+    background-color: #FFF8D2 !important;
+}
+
+textarea[type=text]:focus {
+    background-color: #FFF8D2;
+}
+
+input[readonly] {
+    background-color: #FFF8D2 !important;
+}
+
+input[type=text]:focus {
+    background-color: #FFF8D2;
 }

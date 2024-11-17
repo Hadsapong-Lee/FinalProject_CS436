@@ -11,6 +11,7 @@ namespace FinalProject.Pages
         public String EmailSubject { get; set; }
         public String EmailMessage { get; set; }
         public String EmailDate { get; set; }
+        public String EmailIsRead { get; set; }
         public String EmailSender { get; set; }
         public String EmailReceiver { get; set; }
 
@@ -39,7 +40,8 @@ namespace FinalProject.Pages
                                 EmailID = reader.GetInt32(0).ToString();
                                 EmailSubject = reader.GetString(1);
                                 EmailMessage = reader.GetString(2);
-                                EmailDate = reader.GetDateTime(3).ToString();
+                                EmailDate = reader.GetDateTime(3).ToString("dddd, dd MMMM yyyy HH:mm tt");
+                                EmailIsRead = "" + reader.GetInt32(4);
                                 EmailSender = reader.GetString(5);
                                 EmailReceiver = reader.GetString(6);
 
