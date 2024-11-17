@@ -40,7 +40,7 @@ namespace FinalProject.Pages
 
                     Console.WriteLine(username);
 
-                    String sql = $"SELECT * FROM emails WHERE emailreceiver=\'{username}\'";
+                    String sql = $"SELECT * FROM emails WHERE emailreceiver=\'{username}\' ORDER BY emaildate DESC";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -51,7 +51,7 @@ namespace FinalProject.Pages
                                 emailInfo.EmailID = "" + reader.GetInt32(0);
                                 emailInfo.EmailSubject = reader.GetString(1);
                                 emailInfo.EmailMessage = reader.GetString(2);
-                                emailInfo.EmailDate = reader.GetDateTime(3).ToString();
+                                emailInfo.EmailDate = reader.GetDateTime(3).ToString("dddd, dd MMMM yyyy HH:mm tt");
                                 emailInfo.EmailIsRead = "" + reader.GetInt32(4);
                                 emailInfo.EmailSender = reader.GetString(5);
                                 emailInfo.EmailReceiver = reader.GetString(6);

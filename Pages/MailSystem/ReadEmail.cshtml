@@ -4,66 +4,49 @@
     ViewData["Title"] = "Reading Email";
 }
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/emails.css" asp-append-version="true" />
+</head>
 
-    .email-container {
-        background-color: #fff;
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-        color: #333;
-    }
-
-    h3,
-    h6 {
-        color: #444;
-        margin-top: 0;
-        margin-bottom: 5px;
-    }
-
-    .email-message {
-        color: #333;
-        line-height: 1.6;
-        white-space: pre-wrap;
-    }
-
-.btn-custom {
-    border-radius: 20px;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: #fff;
-    transition: background-color 0.3s ease-in-out;
-    font-weight: bold;
-}
-
-
-</style>
-
-<div class="email-container">
+<div class="account-container">
+    <div class="account-box">
+        <span class="text-end">
+            <a asp-area="" asp-page="/Index" class="btn btn-secondary mt-2"><span style="font-size:24px; padding-bottom:6.5px;">&#8249</span></a>
+        </span>
     <h2 class="text-center mb-4">@ViewData["Title"]</h2>
 
     @if (true)
     {
         <div>
-            <h3 class="mb-3">From: @Model.EmailSender</h3>
-            <h6 class="mb-2">Subject: @Model.EmailSubject</h6>
-            <h6 class="mb-2">Sending Date: @Model.EmailDate</h6>
+            <div class="mb-3">
+                <label class="form-label">From:</label>
+                <input class="form-control mt-2" type="text" value="@Model.EmailSender" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">To:</label>
+                <input class="form-control mt-2" type="text" value="@Model.EmailReceiver" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Subject:</label>
+                <input class="form-control mt-2" type="text" value="@Model.EmailSubject" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Date:</label>
+                <input class="form-control mt-2" type="text" value="@Model.EmailDate" readonly />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Subject:</label>
+                <input class="form-control mt-2" type="text" value="@Model.EmailSubject" readonly />
+            </div>
             <h6 class="mb-2">Message:</h6>
             <div class="email-message" style="color: #666;">@Html.Raw(Model.EmailMessage)</div>
         </div>
     }
-</div>
-<div class="text-center mt-3">
-    <a href="/Index" class="btn btn-custom">Back</a>
+    </div>
 </div>
 

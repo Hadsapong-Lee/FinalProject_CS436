@@ -12,6 +12,7 @@ namespace FinalProject.Pages
         public String EmailMessage { get; set; }
         public String EmailDate { get; set; }
         public String EmailSender { get; set; }
+        public String EmailReceiver { get; set; }
 
         public IActionResult OnGet(string emailId)
         {
@@ -40,6 +41,7 @@ namespace FinalProject.Pages
                                 EmailMessage = reader.GetString(2);
                                 EmailDate = reader.GetDateTime(3).ToString();
                                 EmailSender = reader.GetString(5);
+                                EmailReceiver = reader.GetString(6);
 
                                 return Page();
                             }
