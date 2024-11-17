@@ -32,7 +32,8 @@ namespace FinalProject.Pages
                     if (User.Identity.Name == null)
                     {
                         username = "";
-                    } else
+                    }
+                    else
                     {
                         username = User.Identity.Name;
                     }

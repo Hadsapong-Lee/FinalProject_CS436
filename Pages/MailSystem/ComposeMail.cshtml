@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/emails.css" asp-append-version="true" />
 
 </head>
-    <body>
+<body>
     @*     <div class="email-container"> *@
     @*         <h2 class="email-title">Sending Mail</h2> *@
 
@@ -39,13 +39,13 @@
 
             <div class="mb-3">
                 <label class="form-label">From:</label>
-                <input class="form-control mt-2" type="text" readonly />
+                <input class="form-control mt-2" type="text" value="@Model.EmailSender" readonly />
             </div>
 
             <form id="account" method="post">
                 <div class="mb-3">
                     <label asp-for="EmailReceiver" class="form-label">To:</label>
-                    <input asp-for="EmailReceiver" class="form-control mt-2" placeholder="e.g. receiver@example.com" required />
+                    <input asp-for="EmailReceiver" class="form-control mt-2" placeholder="Receiver Username" required />
                     <span asp-validation-for="EmailReceiver" class="text-warning"></span>
                 </div>
                 <div class="mb-3">
@@ -53,8 +53,8 @@
                     <input asp-for="EmailSubject" class="form-control mt-2" required />
                 </div>
                 <div class="mb-3">
-                    <label asp-for="EmailMessage" class ="form-label">Message:</label>
-                    <textarea asp-for="EmailMessage" class ="form-control mt-2" required></textarea>
+                    <label asp-for="EmailMessage" class="form-label">Message:</label>
+                    <textarea asp-for="EmailMessage" class="form-control mt-2" required></textarea>
                 </div>
                 <div class="submit-btn-wrap text-end">
                     <input type="submit" value="SEND" class="btn btn-success w-25 p-2 mb3" />
@@ -63,5 +63,5 @@
             </form>
         </div>
     </div>
-    </body>
+</body>
 
