@@ -8,13 +8,6 @@ namespace FinalProject.Pages
     {
         public List<EmailInfo> SentEmails = new List<EmailInfo>();
 
-        private readonly ILogger<IndexModel> _logger;
-
-        public SentMailModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
         public void OnGet()
         {
             try
