@@ -13,7 +13,7 @@
 @if(SignInManager.IsSignedIn(User)){
     @if (User.IsInRole("admin") || User.IsInRole("department") || User.IsInRole("warehouse"))
     {
-        <table class="table">
+        <table class="table mt-5">
             <thead class="table-custom">
                 <tr>
                     <th class="custom-text-white">FROM</th>
@@ -45,8 +45,6 @@
             </tbody>
         </table>
     }
-
-    <a class="float-end btn btn-primary btn-sm" href="MailSystem/ComposeMail?Sender=@User.Identity.Name">Compose New Email</a>
 }
 else{
     <p class="text-center mb-5 pt-5 text-muted lead">Please Log In To Continue</p>
