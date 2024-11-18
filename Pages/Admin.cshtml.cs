@@ -38,11 +38,11 @@ namespace FinalProject.Pages
                             while (reader.Read())
                             {
                                 UserInfo userInfo = new UserInfo();
-                                userInfo.FirstName = "" + reader.GetString(0);
+                                userInfo.FirstName = reader.GetString(0);
                                 userInfo.LastName = reader.GetString(1);
                                 userInfo.MobilePhone = reader.GetString(2);
                                 userInfo.UserName = reader.GetString(3);
-                                userInfo.Email = "" + reader.GetString(4);
+                                userInfo.Email = reader.GetString(4);
 
                                 UserList.Add(userInfo);
                             }
@@ -63,7 +63,6 @@ namespace FinalProject.Pages
             public string MobilePhone;
             public string UserName;
             public string Email;
-            public string Role;
         }
     }
 }
