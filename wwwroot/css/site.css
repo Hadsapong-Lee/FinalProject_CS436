@@ -26,3 +26,12 @@ th {
 td {
     color: black;
 }
+
+.table-custom {
+    background-color: #6369E2;
+    height: 3em;
+}
+
+.custom-text-white{
+    color: white;
+}

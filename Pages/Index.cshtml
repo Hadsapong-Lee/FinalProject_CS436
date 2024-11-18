@@ -5,14 +5,14 @@
 }
 
 <table class="table">
-    <thread>
+    <thead class="table-custom">
         <tr>
-            <th>From</th>
-            <th>Subject</th>
-            <th>Date/Time</th>
-            <th></th>
+            <th class="custom-text-white">FROM</th>
+            <th class="custom-text-white">SUBJECT</th>
+            <th class="custom-text-white">DATE/TIME</th>
+            <th class="custom-text-white"></th>
         </tr>
-    </thread>
+    </thead>
 
     <tbody>
         @foreach (var item in Model.listEmails)
