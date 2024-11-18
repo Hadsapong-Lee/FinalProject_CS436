@@ -11,37 +11,40 @@
 @inject UserManager<FinalProjectUser> UserManager
 
 @if(SignInManager.IsSignedIn(User)){
-    <table class="table">
-        <thead class="table-custom">
-            <tr>
-                <th class="custom-text-white">FROM</th>
-                <th class="custom-text-white">SUBJECT</th>
-                <th class="custom-text-white">DATE/TIME</th>
-                <th class="custom-text-white"></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach (var item in Model.listEmails)
-            {
+    @if (User.IsInRole("admin") || User.IsInRole("department") || User.IsInRole("warehouse"))
+    {
+        <table class="table">
+            <thead class="table-custom">
                 <tr>
-                    <td>@item.EmailSender</td>
-                    <td>
-                        @if (item.EmailIsRead.Equals("0"))
-                        {
-                            <img src="images/yellow.gif" height="10pt">
-                        }
-                        @item.EmailSubject
-                    </td>
-                    <td>@item.EmailDate</td>
-                    <td class="text-end">
-                        <a class="btn btn-success btn-sm w-25" href="MailSystem/ReadEmail?emailid=@item.EmailID">View</a>
-                        <a class="btn btn-danger btn-sm w-25" href="MailSystem/DeleteEmail?emailid=@item.EmailID">Delete</a>
-                    </td>
+                    <th class="custom-text-white">FROM</th>
+                    <th class="custom-text-white">SUBJECT</th>
+                    <th class="custom-text-white">DATE/TIME</th>
+                    <th class="custom-text-white"></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.listEmails)
+                {
+                    <tr>
+                        <td>@item.EmailSender</td>
+                        <td>
+                            @if (item.EmailIsRead.Equals("0"))
+                            {
+                                <img src="images/yellow.gif" height="10pt">
+                            }
+                            @item.EmailSubject
+                        </td>
+                        <td>@item.EmailDate</td>
+                        <td class="text-end">
+                            <a class="btn btn-success btn-sm w-25" href="MailSystem/ReadEmail?emailid=@item.EmailID">View</a>
+                            <a class="btn btn-danger btn-sm w-25" href="MailSystem/DeleteEmail?emailid=@item.EmailID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 
     <a class="float-end btn btn-primary btn-sm" href="MailSystem/ComposeMail?Sender=@User.Identity.Name">Compose New Email</a>
 }

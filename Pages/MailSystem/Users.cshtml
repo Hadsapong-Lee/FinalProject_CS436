@@ -3,5 +3,20 @@
 @{
 }
 
+@using Microsoft.AspNetCore.Identity
+@using FinalProject.Areas.Identity.Data
 
-<h1>Admin Kub</h1>
+@inject SignInManager<FinalProjectUser> SignInManager
+@inject UserManager<FinalProjectUser> UserManager
+
+@if(User.IsInRole("department")){
+	<h1>Department</h1>
+}
+else if (User.IsInRole("warehouse"))
+{
+	<h1>Warehouse</h1>
+}
+else{
+	<h1>Access Denied</h1>
+	<label class="leading ps-2">Please Contact Us : 08x-xxx-xxxx</label>
+}
