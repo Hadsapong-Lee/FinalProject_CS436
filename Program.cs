@@ -12,7 +12,6 @@ builder.Services.AddDbContext<FinalProjectContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<FinalProjectUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<FinalProjectContext>();
 builder.Services.AddRazorPages();
 
