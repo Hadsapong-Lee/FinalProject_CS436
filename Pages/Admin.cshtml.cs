@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace FinalProject.Pages.MailSystem
+namespace FinalProject.Pages
 {
     public class AdminModel : PageModel
     {
-        public List<UserInfo> UserList= new List<UserInfo>();
+        public List<UserInfo> UserList = new List<UserInfo>();
 
         public void OnGet()
         {
@@ -30,7 +30,7 @@ namespace FinalProject.Pages.MailSystem
 
                     Console.WriteLine(username);
 
-                    String sql = $"SELECT FirstName, LastName FROM AspNetUsers";
+                    string sql = $"SELECT FirstName, LastName, MobilePhone, UserName, Email FROM AspNetUsers";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -38,7 +38,7 @@ namespace FinalProject.Pages.MailSystem
                             while (reader.Read())
                             {
                                 UserInfo userInfo = new UserInfo();
-                                userInfo.FirstName= "" + reader.GetString(0);
+                                userInfo.FirstName = "" + reader.GetString(0);
                                 userInfo.LastName = reader.GetString(1);
                                 userInfo.MobilePhone = reader.GetString(2);
                                 userInfo.UserName = reader.GetString(3);
@@ -58,11 +58,12 @@ namespace FinalProject.Pages.MailSystem
 
         public class UserInfo
         {
-            public String FirstName;
-            public String LastName;
-            public String MobilePhone;
-            public String UserName;
-            public String Email;
+            public string FirstName;
+            public string LastName;
+            public string MobilePhone;
+            public string UserName;
+            public string Email;
+            public string Role;
         }
     }
 }

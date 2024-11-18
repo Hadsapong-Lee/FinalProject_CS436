@@ -1,0 +1,30 @@
+﻿@page
+@model AdminModel
+@{
+}
+
+<h2 class="mt-4">USER MANAGER</h2>
+
+<table class="table mt-4">
+    <thead class="table-custom">
+        <tr>
+            <th class="custom-text-white">USERNAME</th>
+            <th class="custom-text-white">ROLE</th>
+            <th class="custom-text-white"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Email</td>
+                <td class="text-end">
+                    <a class="btn btn-success btn-sm w-25" href="#">View</a>
+                    <a class="btn btn-danger btn-sm w-25" href="#">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
