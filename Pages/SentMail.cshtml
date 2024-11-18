@@ -1,0 +1,53 @@
+﻿@page
+@model SentMailModel
+@{
+    ViewData["Title"] = "Sent Mail";
+}
+
+@using Microsoft.AspNetCore.Identity
+@using FinalProject.Areas.Identity.Data
+
+@inject SignInManager<FinalProjectUser> SignInManager
+@inject UserManager<FinalProjectUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("admin") || User.IsInRole("department") || User.IsInRole("warehouse"))
+    {
+        <table class="table mt-5">
+            <thead class="table-custom">
+                <tr>
+                    <th class="custom-text-white">FROM</th>
+                    <th class="custom-text-white">SUBJECT</th>
+                    <th class="custom-text-white">DATE/TIME</th>
+                    <th class="custom-text-white"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.listEmails)
+                {
+                    <tr>
+                        <td>@item.EmailSender</td>
+                        <td>
+                            @if (item.EmailIsRead.Equals("0"))
+                            {
+                                <img src="images/yellow.gif" height="10pt">
+                            }
+                            @item.EmailSubject
+                        </td>
+                        <td>@item.EmailDate</td>
+                        <td class="text-end">
+                            <a class="btn btn-success btn-sm w-25" href="MailSystem/ReadEmail?emailid=@item.EmailID">View</a>
+                            <a class="btn btn-danger btn-sm w-25" href="MailSystem/DeleteEmail?emailid=@item.EmailID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+    <p class="text-center mb-5 pt-5 text-muted lead">Please Log In To Continue</p>
+}
