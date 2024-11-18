@@ -17,7 +17,7 @@
         <table class="table mt-5">
             <thead class="table-custom">
                 <tr>
-                    <th class="custom-text-white">FROM</th>
+                    <th class="custom-text-white">TO</th>
                     <th class="custom-text-white">SUBJECT</th>
                     <th class="custom-text-white">DATE/TIME</th>
                     <th class="custom-text-white"></th>
@@ -25,10 +25,10 @@
             </thead>
 
             <tbody>
-                @foreach (var item in Model.listEmails)
+                @foreach (var item in Model.SentEmails)
                 {
                     <tr>
-                        <td>@item.EmailSender</td>
+                        <td>@item.EmailReceiver</td>
                         <td>
                             @if (item.EmailIsRead.Equals("0"))
                             {
@@ -38,8 +38,7 @@
                         </td>
                         <td>@item.EmailDate</td>
                         <td class="text-end">
-                            <a class="btn btn-success btn-sm w-25" href="MailSystem/ReadEmail?emailid=@item.EmailID">View</a>
-                            <a class="btn btn-danger btn-sm w-25" href="MailSystem/DeleteEmail?emailid=@item.EmailID">Delete</a>
+                            <a class="btn btn-success btn-sm w-50" href="MailSystem/ReadEmail?emailid=@item.EmailID">View</a>
                         </td>
                     </tr>
                 }
