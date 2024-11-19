@@ -7,16 +7,29 @@ namespace FinalProject.Pages.UserManager
 {
     public class EditUserModel : PageModel
     {
-        public String UserId { get; set; }
+
+        [BindProperty]
         public String FirstName { get; set; }
+
+        [BindProperty]
         public String LastName { get; set; }
+
+        [BindProperty]
         public String MobilePhone { get; set; }
+
+        [BindProperty]
         public String UserName { get; set; }
+
+        [BindProperty]
         public String Email { get; set; }
+
+        [BindProperty]
         public String UserRole { get; set; }
 
-        public IActionResult OnGet(string userId)
+        public void OnGet()
         {
+
+            String Id = Request.Query["Id"];
             try
             {
                 string connectionString = "Server=tcp:datapj.database.windows.net,1433;Initial Catalog=datapj;Persist Security Info=False;User ID=fproject;Password=Final12Proj3ct;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
@@ -24,26 +37,24 @@ namespace FinalProject.Pages.UserManager
                 {
                     connection.Open();
 
-                    string sql = "SELECT [dbo].[AspNetUsers].Id, [dbo].[AspNetUsers].UserName, [dbo].[AspNetRoles].Name FROM [dbo].[AspNetUsers]" +
-                                    " INNER JOIN [dbo].[AspNetUserRoles] ON [dbo].[AspNetUsers].Id = [dbo].[AspNetUserRoles].UserId" +
-                                    " INNER JOIN [dbo].[AspNetRoles] ON [dbo].[AspNetUserRoles].RoleId = [dbo].[AspNetRoles].Id" +
-                                    " WHERE [dbo].[AspNetRoles].Id=\'"+userId+"\'";
+                    string sql = "SELECT [dbo].[AspNetUsers].FirstName, [dbo].[AspNetUsers].LastName, [dbo].[AspNetUsers].MobilePhone, [dbo].[AspNetUsers].UserName, [dbo].[AspNetUsers].Email, [dbo].[AspNetRoles].Name " +
+                                    "FROM [dbo].[AspNetUsers] " +
+                                    "INNER JOIN [dbo].[AspNetUserRoles] ON [dbo].[AspNetUsers].Id = [dbo].[AspNetUserRoles].UserId " +
+                                    "INNER JOIN [dbo].[AspNetRoles] ON [dbo].[AspNetUserRoles].RoleId = [dbo].[AspNetRoles].Id " +
+                                    "WHERE [dbo].[AspNetUsers].Id=@Id;";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
+                        command.Parameters.AddWithValue("Id", Id);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            while (reader.Read())
+                            if (reader.Read())
                             {
-                                
-                                UserId = reader.GetString(0);
-                                FirstName = reader.GetString(1);
-                                LastName = reader.GetString(2);
-                                MobilePhone = reader.GetString(3);
-                                UserName = reader.GetString(4);
-                                Email = reader.GetString(5);
-                                UserRole = reader.GetString(6);
-
-                                return Page();
+                                FirstName = reader.GetString(0);
+                                LastName = reader.GetString(1);
+                                MobilePhone = reader.GetString(2);
+                                UserName = reader.GetString(3);
+                                Email = reader.GetString(4);
+                                UserRole = reader.GetString(5);
                             }
                         }
                     }
@@ -53,8 +64,10 @@ namespace FinalProject.Pages.UserManager
             {
                 Console.WriteLine(ex.ToString());
             }
+        }
 
-            return RedirectToPage("/Admin");
+        public void OnPost() { 
+        
         }
     }
 }
