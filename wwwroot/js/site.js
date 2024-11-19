@@ -15,3 +15,21 @@ listItems.forEach(item => {
         this.classList.add('active');
     });
 });
+
+function setActive(element) {
+    // Remove "active" class from all list items
+    const items = document.querySelectorAll('.wrapper .sidebar ul li');
+    items.forEach(item => item.classList.remove('active'));
+
+    // Add "active" class to the clicked item
+    element.classList.add('active');
+}
+
+function setActive(element) {
+    // Remove "active" class from all list items
+    const items = document.querySelectorAll('.wrapper .sidebar ul li');
+    items.forEach(item => item.classList.remove('active'));
+
+    // Add "active" class to the clicked item
+    element.classList.add('active');
+}

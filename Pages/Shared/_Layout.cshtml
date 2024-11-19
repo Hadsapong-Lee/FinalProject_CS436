@@ -67,19 +67,19 @@
         <div class="wrapper">
             <div class="sidebar">
             <ul>
-                <li>
+                <li onclick="setActive(this)">
                     <a asp-area="" asp-page="/Index">
                         <i class="fa-solid fa-inbox"></i>
                         <span>Mailbox</span>
                     </a>
                 </li>
-                <li>
+                <li onclick="setActive(this)">
                     <a href="/ComposeMail?Sender=@User.Identity.Name">
                         <i class="fa-solid fa-pen"></i>
                         <span>Write</span>
                     </a>
                 </li>
-                <li>
+                <li onclick="setActive(this)">
                     <a href="/SentMail">
                         <i class="fa-solid fa-paper-plane"></i>
                         <span>Sent</span>
