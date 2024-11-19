@@ -47,6 +47,7 @@ body {
 .wrapper .sidebar ul li a {
     color: black;
     display: block;
+    text-decoration: none;
 }
 
 .wrapper .sidebar ul li a.fa {
@@ -55,16 +56,24 @@ body {
 
 .wrapper .sidebar ul li:hover {
     background: #6369E2;
+    color: #fff;
 }
 
 .wrapper .sidebar ul li:hover span {
     color: #fff;
 }
 
+.wrapper .sidebar ul li:hover a {
+    color: #fff;
+}
+
 .wrapper .sidebar ul li.active {
-   background-color: #6369E2;
-   color:white;
-      
+    background-color: #6369E2;
+    color: #fff;
+}
+
+.wrapper .sidebar ul li.active a {
+    color: #fff;
 }
 
 
