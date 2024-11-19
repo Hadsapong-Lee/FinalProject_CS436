@@ -7,8 +7,13 @@ namespace FinalProject.Pages.UserManager
 {
     public class EditUserModel : PageModel
     {
-
-        public List<UserFullInfo> UserList = new List<UserFullInfo>();
+        public String UserId { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public String MobilePhone { get; set; }
+        public String UserName { get; set; }
+        public String Email { get; set; }
+        public String UserRole { get; set; }
 
         public IActionResult OnGet(string userId)
         {
@@ -29,12 +34,14 @@ namespace FinalProject.Pages.UserManager
                         {
                             while (reader.Read())
                             {
-                                UserFullInfo userInfo = new UserFullInfo();
-                                userInfo.UserId = reader.GetString(0);
-                                userInfo.UserName = reader.GetString(1);
-                                userInfo.UserRole = reader.GetString(2);
-
-                                UserList.Add(userInfo);
+                                
+                                UserId = reader.GetString(0);
+                                FirstName = reader.GetString(1);
+                                LastName = reader.GetString(2);
+                                MobilePhone = reader.GetString(3);
+                                UserName = reader.GetString(4);
+                                Email = reader.GetString(5);
+                                UserRole = reader.GetString(6);
 
                                 return Page();
                             }
@@ -48,17 +55,6 @@ namespace FinalProject.Pages.UserManager
             }
 
             return RedirectToPage("/Admin");
-        }
-
-        public class UserFullInfo
-        {
-            public string UserId;
-            public string FirstName;
-            public string LastName;
-            public string MobilePhone;
-            public string UserName;
-            public string Email;
-            public string UserRole;
         }
     }
 }
