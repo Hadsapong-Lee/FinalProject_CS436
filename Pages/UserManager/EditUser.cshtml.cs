@@ -1,15 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
-using System.Data;
+using static FinalProject.Pages.AdminModel;
 
-namespace FinalProject.Pages
+namespace FinalProject.Pages.UserManager
 {
-    public class AdminModel : PageModel
+    public class EditUserModel : PageModel
     {
-        public List<UserInfo> UserList = new List<UserInfo>();
 
-        public void OnGet()
+        public List<UserFullInfo> UserList = new List<UserFullInfo>();
+
+        public IActionResult OnGet(string userId)
         {
             try
             {
@@ -18,22 +19,24 @@ namespace FinalProject.Pages
                 {
                     connection.Open();
 
-                    string sql = "SELECT [dbo].[AspNetUsers].Id, [dbo].[AspNetUsers].UserName, [dbo].[AspNetRoles].Name FROM [dbo].[AspNetUsers]" + 
+                    string sql = "SELECT [dbo].[AspNetUsers].Id, [dbo].[AspNetUsers].UserName, [dbo].[AspNetRoles].Name FROM [dbo].[AspNetUsers]" +
                                     " INNER JOIN [dbo].[AspNetUserRoles] ON [dbo].[AspNetUsers].Id = [dbo].[AspNetUserRoles].UserId" +
                                     " INNER JOIN [dbo].[AspNetRoles] ON [dbo].[AspNetUserRoles].RoleId = [dbo].[AspNetRoles].Id" +
-                                    " WHERE NOT [dbo].[AspNetRoles].Name=\'admin\'";
+                                    " WHERE [dbo].[AspNetRoles].Id=\'"+userId+"\'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                UserInfo userInfo = new UserInfo();
+                                UserFullInfo userInfo = new UserFullInfo();
                                 userInfo.UserId = reader.GetString(0);
                                 userInfo.UserName = reader.GetString(1);
                                 userInfo.UserRole = reader.GetString(2);
 
                                 UserList.Add(userInfo);
+
+                                return Page();
                             }
                         }
                     }
@@ -43,12 +46,18 @@ namespace FinalProject.Pages
             {
                 Console.WriteLine(ex.ToString());
             }
+
+            return RedirectToPage("/Admin");
         }
 
-        public class UserInfo
+        public class UserFullInfo
         {
             public string UserId;
+            public string FirstName;
+            public string LastName;
+            public string MobilePhone;
             public string UserName;
+            public string Email;
             public string UserRole;
         }
     }

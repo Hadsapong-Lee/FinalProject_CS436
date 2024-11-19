@@ -9,14 +9,70 @@
 @inject SignInManager<FinalProjectUser> SignInManager
 @inject UserManager<FinalProjectUser> UserManager
 
-@if(User.IsInRole("department")){
-	<h1>Department</h1>
-}
-else if (User.IsInRole("warehouse"))
-{
-	<h1>Warehouse</h1>
-}
-else{
-	<h1>Access Denied</h1>
-	<label class="leading ps-2">Please Contact Us : 08x-xxx-xxxx</label>
-}
+@* @if(User.IsInRole("department")){ *@
+@* 	<h1>Department</h1> *@
+@* } *@
+@* else if (User.IsInRole("warehouse")) *@
+@* { *@
+@* 	<h1>Warehouse</h1> *@
+@* } *@
+@* else{ *@
+@* 	<h1>Access Denied</h1> *@
+@* 	<label class="leading ps-2">Please Contact Us : 08x-xxx-xxxx</label> *@
+@* } *@
+
+<h2 class="mt-4 mb-4 text-center">ALL USERS</h2>
+
+<label class="h4 ps-1 text-black-50">Department Branch</label>
+<table class="table mt-1 mb-5">
+    <thead class="table-custom">
+        <tr>
+            <th class="custom-text-white">USERNAME</th>
+            <th class="custom-text-white">ROLE</th>
+            <th class="custom-text-white"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+            @if (item.UserRole.Equals("department"))
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td class="text-capitalize">@item.UserRole</td>
+                    <td class="text-end">
+                        <a class="btn btn-success btn-sm w-25" href="UserManager/ViewUser?Id=@item.UserId">View</a>                        
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<label class="h4 ps-1 text-black-50">Warehouse Branch</label>
+<table class="table mt-1 mb-3">
+    <thead class="table-custom">
+        <tr>
+            <th class="custom-text-white">USERNAME</th>
+            <th class="custom-text-white">ROLE</th>
+            <th class="custom-text-white"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+            @if (item.UserRole.Equals("warehouse"))
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td class="text-capitalize">@item.UserRole</td>
+                    <td class="text-end">
+                        <a class="btn btn-success btn-sm w-25" href="UserManager/ViewUser?Id=@item.UserId">View</a>                       
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

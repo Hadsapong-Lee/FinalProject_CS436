@@ -1,11 +1,13 @@
 ﻿@page
 @model AdminModel
 @{
+    ViewData["Title"] = "Administrator";
 }
 
-<h2 class="mt-4">USER MANAGER</h2>
+<h2 class="mt-4 mb-4 text-center">USER MANAGER</h2>
 
-<table class="table mt-4">
+<label class="h4 ps-1 text-black-50">Department Branch</label>
+<table class="table mt-1 mb-5">
     <thead class="table-custom">
         <tr>
             <th class="custom-text-white">USERNAME</th>
@@ -17,14 +19,44 @@
     <tbody>
         @foreach (var item in Model.UserList)
         {
-            <tr>
-                <td>@item.UserName</td>
-                <td>@item.Email</td>
-                <td class="text-end">
-                    <a class="btn btn-success btn-sm w-25" href="#">View</a>
-                    <a class="btn btn-danger btn-sm w-25" href="#">Delete</a>
-                </td>
-            </tr>
+            @if(item.UserRole.Equals("department")){
+                <tr>
+                    <td>@item.UserName</td>
+                    <td class="text-capitalize">@item.UserRole</td>
+                    <td class="text-end">
+                        <a class="btn btn-success btn-sm" style="width:15%" href="UserManager/EditUser?Id=@item.UserId">Edit</a>
+                        <a class="btn btn-danger btn-sm" style="width:15%" href="UserManager/DeleteUser?Id=@item.UserId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<label class="h4 ps-1 text-black-50">Warehouse Branch</label>
+<table class="table mt-1 mb-3">
+    <thead class="table-custom">
+        <tr>
+            <th class="custom-text-white">USERNAME</th>
+            <th class="custom-text-white">ROLE</th>
+            <th class="custom-text-white"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+            @if (item.UserRole.Equals("warehouse"))
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td class="text-capitalize">@item.UserRole</td>
+                    <td class="text-end">
+                        <a class="btn btn-success btn-sm" style="width:15%" href="UserManager/EditUser?Id=@item.UserId">Edit</a>
+                        <a class="btn btn-danger btn-sm" style="width:15%" href="UserManager/DeleteUser?Id=@item.UserId">Delete</a>
+                    </td>
+                </tr>
+            }
         }
     </tbody>
 </table>

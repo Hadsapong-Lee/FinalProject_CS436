@@ -4,53 +4,71 @@
     ViewData["Title"] = "Sending Mail";
 }
 
+@using Microsoft.AspNetCore.Identity
+@using FinalProject.Areas.Identity.Data
+
+@inject SignInManager<FinalProjectUser> SignInManager
+@inject UserManager<FinalProjectUser> UserManager
+
 <head>
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/emails.css" asp-append-version="true" />
 
 </head>
-<body>
 
-    <div class="account-container">
-        <div class="account-box">
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("admin") || User.IsInRole("department") || User.IsInRole("warehouse"))
+    {
+        <body>
+            <div class="account-container">
+                <div class="account-box">
 
-            <div class="text-center prime-header text-white" style="background: #6369E2;">
-                <h2 class="text-center mb-2 mt-2">WRITE EMAIL</h2>
-            </div>
+                    <div class="text-center prime-header text-white" style="background: #6369E2;">
+                        <h2 class="text-center mb-2 mt-2">WRITE EMAIL</h2>
+                    </div>
 
-            <div class="input-group mb-0">
-                <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">FROM :</span>
-                <input class="form-control" type="text" style="border-top:0; border-right:0; border-radius:0;" value="@Model.EmailSender" readonly />
-            </div>
+                    <div class="input-group mb-0">
+                        <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">FROM :</span>
+                        <input class="form-control" type="text" style="border-top:0; border-right:0; border-radius:0;" value="@Model.EmailSender" readonly />
+                    </div>
 
-            <form id="account" method="post">
-                <div class="input-group mb-0">
-                    <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">
-                        <label asp-for="EmailReceiver">TO :</label>
-                    </span>                    
-                    <input asp-for="EmailReceiver" class="form-control top-label" style="border-top:0; border-right:0; border-radius:0;" type="text" required />
-                </div>
-                <div class="input-group mb-0">
-                    <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">
-                        <label asp-for="EmailSubject">SUBJECT :</label>
-                    </span>
-                    <input asp-for="EmailSubject" class="form-control top-label" style="border-top:0; border-right:0; border-radius:0;" type="text" required />
-                </div>
-
-                <div class="prime-label">
-                    <div class="mb-3">
-                        <div class="sub-header" style="background-color:#6369E2; border-radius: 10px 10px 0 0;">
-                            <label asp-for="EmailMessage" class="text-white">Message :</label>
+                    <form id="account" method="post">
+                        <div class="input-group mb-0">
+                            <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">
+                                <label asp-for="EmailReceiver">TO :</label>
+                            </span>                    
+                            <input asp-for="EmailReceiver" class="form-control top-label" style="border-top:0; border-right:0; border-radius:0;" type="text" required />
                         </div>
-                        <textarea asp-for="EmailMessage" class="form-control mt-0 message-panel" type="text" required></textarea>
-                    </div>
-                    <div class="submit-btn-wrap text-end">
-                        <input type="submit" value="SEND" class="btn btn-primary custom-width-for-btn p-2 mb3" />
-                        <span>&#8250;</span>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</body>
+                        <div class="input-group mb-0">
+                            <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">
+                                <label asp-for="EmailSubject">SUBJECT :</label>
+                            </span>
+                            <input asp-for="EmailSubject" class="form-control top-label" style="border-top:0; border-right:0; border-radius:0;" type="text" required />
+                        </div>
 
+                        <div class="prime-label">
+                            <div class="mb-3">
+                                <div class="sub-header" style="background-color:#6369E2; border-radius: 10px 10px 0 0;">
+                                    <label asp-for="EmailMessage" class="text-white">Message :</label>
+                                </div>
+                                <textarea asp-for="EmailMessage" class="form-control mt-0 message-panel" type="text" required></textarea>
+                            </div>
+                            <div class="submit-btn-wrap text-end">
+                                <input type="submit" value="SEND" class="btn btn-primary custom-width-for-btn p-2 mb3" />
+                                <span>&#8250;</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </body>
+    }
+    else{
+        <p class="text-center mb-5 pt-5 text-muted lead">You are not yet authorized.<br/>Please contact us : 08x-xxx-xxxx</p>
+    }
+}
+else
+{
+<p class="text-center mb-5 pt-5 text-muted lead">Please Log In To Continue</p>
+}

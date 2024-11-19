@@ -62,8 +62,10 @@
         </nav>
     </header>
 
-    <div class="wrapper">
-        <div class="sidebar">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="wrapper">
+            <div class="sidebar">
             <ul>
                 <li>
                     <a asp-area="" asp-page="/Index">
@@ -86,6 +88,7 @@
             </ul>
         </div>
     </div>
+    }
 
     <div class="container">
         <main role="main" class="pb-3">
