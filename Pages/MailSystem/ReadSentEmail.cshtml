@@ -1,0 +1,45 @@
+﻿@page
+@model FinalProject.Pages.ReadSentEmailModel
+@{
+    ViewData["Title"] = "Reading Sent Email";
+}
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/emails.css" asp-append-version="true" />
+</head>
+
+<div class="account-container">
+    <div class="account-box">
+
+        <div class="text-center prime-header text-white" style="background: #6369E2;">
+            <h2 class="text-center mb-2 mt-2">READ EMAIL</h2>
+        </div>
+
+    <div>
+
+        <div class="input-group mb-0">
+                <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">FROM :</span>
+            <label type="text" class="form-control top-label" style="border-top:0; border-right:0; border-radius:0;">@Model.EmailSender</label>
+        </div>
+        <div class="input-group mb-0">
+                <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">SUBJECT :</span>
+                <label type="text" class="form-control top-label" style="border-top:0; border-right:0; border-radius:0;">@Model.EmailSubject</label>
+        </div>
+
+        <div class="prime-label">
+            <div class="mb-4">
+                <div class="sub-header" style="background-color:#6369E2; border-radius: 10px 10px 0 0;">
+                    <label class="text-white">MESSAGE :</label>
+                </div>
+                    <textarea class="form-control mt-0 message-panel" type="text" readonly>@Model.EmailMessage</textarea>
+            </div>
+            <div class="text-end">
+                <label class="text-black-50" type="text">@Model.EmailDate</label>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+</div>
+

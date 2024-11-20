@@ -30,6 +30,7 @@ body {
 .wrapper {
     display: flex;
     position: relative;
+    padding-top:57px;
 }
 
 .wrapper .sidebar {
