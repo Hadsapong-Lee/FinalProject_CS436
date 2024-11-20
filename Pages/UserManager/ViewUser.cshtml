@@ -2,3 +2,53 @@
 @model FinalProject.Pages.UserManager.ViewUserModel
 @{
 }
+
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
+
+</head>
+
+<div class="account-container">
+    <div class="account-box">
+        <div class="prime-header text-white mb-3 back-btn-wrap text-center" style="background: #6369E2;">
+            <h2 class="text-center mb-2 mt-2">VIEW USER</h2>
+
+        </div>
+
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Username</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.UserName</label>
+        </div>
+
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Name</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.FirstName @Model.LastName</label>
+        </div>
+
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Email</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.Email</label>
+        </div>
+
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Phone Number</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.MobilePhone</label>
+        </div>
+
+        <div class="ms-5 mb-4">
+            <label class="h5 mb-1">Role</label>
+            <br />
+            <label type="text" class="ms-2 lead text-capitalize">@Model.UserRole</label>
+        </div>
+
+        <div class="text-end mb-3 me-3">
+            <a href="/Users" class="btn btn-secondary p-1" style="width:5em;"> BACK</a>
+        </div>
+
+    </div>
+</div>

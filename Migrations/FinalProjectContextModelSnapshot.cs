@@ -131,24 +131,31 @@ namespace FinalProject.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2bc4dec7-c6fe-465c-a4e0-0fb8c0a45f68",
-                            ConcurrencyStamp = "2b55f047-c9c7-4a1f-8b7e-746eba52dbc1",
+                            Id = "a6b3c849-02e5-4e67-9496-6b64e1a07e8e",
+                            ConcurrencyStamp = "e858600c-3960-44e8-ba11-6719422f35f3",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "f47b44e5-17b2-474d-8623-209302d22adb",
-                            ConcurrencyStamp = "5b25f163-17a3-4cd3-a8ac-cc01341fcb15",
+                            Id = "f4bb9053-0472-418c-9ab5-adeab7a69abd",
+                            ConcurrencyStamp = "9b2a95b2-3372-4375-8235-9b08e85f10f8",
                             Name = "department",
                             NormalizedName = "department"
                         },
                         new
                         {
-                            Id = "37022dfb-ee12-4186-b4a0-9e6164202574",
-                            ConcurrencyStamp = "b0f1a476-0760-44fa-87ec-62271fcc7958",
+                            Id = "3b04a8a4-1107-4005-8081-7a7690d4623f",
+                            ConcurrencyStamp = "3e6c0d1e-265d-4786-92d5-31ab5a5efaaa",
                             Name = "warehouse",
                             NormalizedName = "warehouse"
+                        },
+                        new
+                        {
+                            Id = "aae3f34b-96ca-4a0b-9362-3a70f231ff0f",
+                            ConcurrencyStamp = "79c4dcbd-f350-4bd5-af32-6701950171d0",
+                            Name = "user",
+                            NormalizedName = "user"
                         });
                 });
 

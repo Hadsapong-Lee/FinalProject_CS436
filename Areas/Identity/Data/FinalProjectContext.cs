@@ -26,7 +26,11 @@ public class FinalProjectContext : IdentityDbContext<FinalProjectUser>
         var warehouse = new IdentityRole("warehouse");
         warehouse.NormalizedName = "warehouse";
 
-        builder.Entity<IdentityRole>().HasData(admin, department, warehouse);
+
+        var user = new IdentityRole("user");
+        user.NormalizedName = "user";
+
+        builder.Entity<IdentityRole>().HasData(admin, department, warehouse, user);
         builder.ApplyConfiguration(new FinalProjectUserEntityConfiguration());
     }
 }

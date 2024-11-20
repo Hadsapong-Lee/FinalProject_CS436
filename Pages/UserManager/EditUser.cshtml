@@ -4,24 +4,90 @@
 }
 
 <head>
-	<title>@ViewData["Title"]</title>
-	<link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
 
 </head>
 
 <div class="account-container">
-	<div class="account-box">
-        <div class="text-center prime-header text-white" style="background: #6369E2;">
+    <div class="account-box">
+        <div class="text-center prime-header text-white mb-3" style="background: #6369E2;">
             <h2 class="text-center mb-2 mt-2">EDIT USER</h2>
         </div>
 
-        <div class="input-group mb-0">
-            <span class="input-group-text">Username :</span>
-            <label type="text" class="form-control top-label">@Model.UserName</label>
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Username</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.UserName</label>
         </div>
-        <div class="input-group mb-0">
-            <span class="input-group-text" style="border-top:0; border-left:0; border-radius:0;">First Name :</span>
-            <label type="text" class="form-control top-label" style="border-top:0; border-right:0; border-radius:0;">@Model.FirstName</label>
+
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Name</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.FirstName @Model.LastName</label>
         </div>
+
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Email</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.Email</label>
+        </div>
+
+        <div class="ms-5 mb-2">
+            <label class="h5 mb-1">Phone Number</label>
+            <br />
+            <label type="text" class="ms-2 lead">@Model.MobilePhone</label>
+        </div>
+        @if (Model.UserRole.Equals("user")){
+            <div class="ms-5 mb-4">
+                <label class="h5 mb-1">Role</label>
+                <br />
+                <label type="text" class="ms-2 lead text-capitalize">None</label>
+            </div>
+        }
+        else{
+            <div class="ms-5 mb-4">
+                <label class="h5 mb-1">Role</label>
+                <br />
+                <label type="text" class="ms-2 lead text-capitalize">@Model.UserRole</label>
+            </div>
+        }
+
+        <div class="text-start ms-5 mb-4">
+            <label class="h5 mb-1">Change Role</label>
+        </div>
+        @if (Model.UserRole.Equals("user"))
+        {
+            <div class="mb-3 me-3">
+                <span class="ms-5 text-start">
+                    <a href="/UserManager/ChangeToDepartment?UserId=@Model.UserId" class="btn btn-primary p-1" style="width:6em;"> Department</a>
+                    <a href="/UserManager/ChangeToWarehouse?UserId=@Model.UserId" class="btn btn-primary p-1" style="width:6em;"> Warehouse</a>
+                </span>
+            </div>
+        }
+        else if (Model.UserRole.Equals("department"))
+        {
+            <div class="mb-3 me-3">
+                <span class="ms-5 text-start">
+                    <a href="#" class="btn btn-secondary p-1 disabled" style="width:6em;"> Department</a>
+                    <a href="/UserManager/ChangeToWarehouse?UserId=@Model.UserId" class="btn btn-primary p-1" style="width:6em;"> Warehouse</a>
+                </span>
+            </div>
+        }
+        else if (Model.UserRole.Equals("warehouse"))
+        {
+            <div class="mb-3 me-3">
+                <span class="ms-5 text-start">
+                    <a href="/UserManager/ChangeToDepartment?UserId=@Model.UserId" class="btn btn-primary p-1" style="width:6em;"> Department</a>
+                    <a href="#" class="btn btn-secondary p-1 disabled" style="width:6em;"> Warehouse</a>
+                </span>
+            </div>
+        }
+
+        <div class="text-end me-4 mb-4">
+            <a href="/Admin" class="btn btn-secondary p-1" style="width:6em;"> BACK</a>
+        </div>
+
+
 	</div>
 </div>

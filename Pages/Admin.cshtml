@@ -24,8 +24,8 @@
                     <td>@item.UserName</td>
                     <td class="text-capitalize">@item.UserRole</td>
                     <td class="text-end">
-                        <a class="btn btn-success btn-sm" style="width:15%" href="UserManager/EditUser?Id=@item.UserId">Edit</a>
-                        <a class="btn btn-danger btn-sm" style="width:15%" href="UserManager/DeleteUser?Id=@item.UserId">Delete</a>
+                        <a class="btn btn-success btn-sm" style="width:5em" href="UserManager/EditUser?Id=@item.UserId">Edit</a>
+                        <a class="btn btn-danger btn-sm" style="width:5em" href="UserManager/DeleteUser?Id=@item.UserId">Delete</a>
                     </td>
                 </tr>
             }
@@ -34,7 +34,7 @@
 </table>
 
 <label class="h4 ps-1 text-black-50">Warehouse Branch</label>
-<table class="table mt-1 mb-3">
+<table class="table mt-1 mb-5">
     <thead class="table-custom">
         <tr>
             <th class="custom-text-white">USERNAME</th>
@@ -52,8 +52,34 @@
                     <td>@item.UserName</td>
                     <td class="text-capitalize">@item.UserRole</td>
                     <td class="text-end">
-                        <a class="btn btn-success btn-sm" style="width:15%" href="UserManager/EditUser?Id=@item.UserId">Edit</a>
-                        <a class="btn btn-danger btn-sm" style="width:15%" href="UserManager/DeleteUser?Id=@item.UserId">Delete</a>
+                        <a class="btn btn-success btn-sm" style="width:5em" href="UserManager/EditUser?Id=@item.UserId">Edit</a>
+                        <a class="btn btn-danger btn-sm" style="width:5em" href="UserManager/DeleteUser?Id=@item.UserId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<label class="h4 ps-1 text-black-50">Unauthorized User</label>
+<table class="table mt-1 mb-5">
+    <thead class="table-custom">
+        <tr>
+            <th class="custom-text-white">USERNAME</th>
+            <th class="custom-text-white"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+            @if (item.UserRole.Equals("user"))
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td class="text-end">
+                        <a class="btn btn-success btn-sm" style="width:5em" href="UserManager/EditUser?Id=@item.UserId">Edit</a>
+                        <a class="btn btn-danger btn-sm" style="width:5em" href="UserManager/DeleteUser?Id=@item.UserId">Delete</a>
                     </td>
                 </tr>
             }

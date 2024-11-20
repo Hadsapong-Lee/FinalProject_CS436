@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using System.ComponentModel.DataAnnotations;
 using static FinalProject.Pages.AdminModel;
 
 namespace FinalProject.Pages.UserManager
@@ -8,22 +9,12 @@ namespace FinalProject.Pages.UserManager
     public class EditUserModel : PageModel
     {
 
-        [BindProperty]
+        public String UserId { get; set; }
         public String FirstName { get; set; }
-
-        [BindProperty]
         public String LastName { get; set; }
-
-        [BindProperty]
         public String MobilePhone { get; set; }
-
-        [BindProperty]
         public String UserName { get; set; }
-
-        [BindProperty]
         public String Email { get; set; }
-
-        [BindProperty]
         public String UserRole { get; set; }
 
         public void OnGet()
@@ -37,7 +28,7 @@ namespace FinalProject.Pages.UserManager
                 {
                     connection.Open();
 
-                    string sql = "SELECT [dbo].[AspNetUsers].FirstName, [dbo].[AspNetUsers].LastName, [dbo].[AspNetUsers].MobilePhone, [dbo].[AspNetUsers].UserName, [dbo].[AspNetUsers].Email, [dbo].[AspNetRoles].Name " +
+                    string sql = "SELECT [dbo].[AspNetUsers].Id, [dbo].[AspNetUsers].FirstName, [dbo].[AspNetUsers].LastName, [dbo].[AspNetUsers].MobilePhone, [dbo].[AspNetUsers].UserName, [dbo].[AspNetUsers].Email, [dbo].[AspNetRoles].Name " +
                                     "FROM [dbo].[AspNetUsers] " +
                                     "INNER JOIN [dbo].[AspNetUserRoles] ON [dbo].[AspNetUsers].Id = [dbo].[AspNetUserRoles].UserId " +
                                     "INNER JOIN [dbo].[AspNetRoles] ON [dbo].[AspNetUserRoles].RoleId = [dbo].[AspNetRoles].Id " +
@@ -49,12 +40,13 @@ namespace FinalProject.Pages.UserManager
                         {
                             if (reader.Read())
                             {
-                                FirstName = reader.GetString(0);
-                                LastName = reader.GetString(1);
-                                MobilePhone = reader.GetString(2);
-                                UserName = reader.GetString(3);
-                                Email = reader.GetString(4);
-                                UserRole = reader.GetString(5);
+                                UserId = reader.GetString(0);
+                                FirstName = reader.GetString(1);
+                                LastName = reader.GetString(2);
+                                MobilePhone = reader.GetString(3);
+                                UserName = reader.GetString(4);
+                                Email = reader.GetString(5);
+                                UserRole = reader.GetString(6);
                             }
                         }
                     }
