@@ -23,6 +23,33 @@
 
 <h2 class="mt-4 mb-4 text-center">ALL USERS</h2>
 
+<label class="h4 ps-1 text-black-50">My Account</label>
+<table class="table mt-1 mb-5">
+    <thead class="table-custom">
+        <tr>
+            <th class="custom-text-white">USERNAME</th>
+            <th class="custom-text-white">ROLE</th>
+            <th class="custom-text-white"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+            @if (User.Identity.Name == item.UserName)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td class="text-capitalize">@item.UserRole</td>
+                    <td class="text-end">
+                        <a class="btn btn-success btn-sm w-25" href="UserManager/ViewUser?Id=@item.UserId">View</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
 <label class="h4 ps-1 text-black-50">Department Branch</label>
 <table class="table mt-1 mb-5">
     <thead class="table-custom">
@@ -36,7 +63,7 @@
     <tbody>
         @foreach (var item in Model.UserList)
         {
-            @if (item.UserRole.Equals("department"))
+            @if (item.UserRole.Equals("department") && User.Identity.Name != item.UserName)
             {
                 <tr>
                     <td>@item.UserName</td>
@@ -63,7 +90,7 @@
     <tbody>
         @foreach (var item in Model.UserList)
         {
-            @if (item.UserRole.Equals("warehouse"))
+            @if (item.UserRole.Equals("warehouse") && User.Identity.Name != item.UserName)
             {
                 <tr>
                     <td>@item.UserName</td>
