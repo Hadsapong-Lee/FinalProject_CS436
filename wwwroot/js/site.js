@@ -3,15 +3,16 @@
 
 // Write your JavaScript code.
 
-const listItems = document.querySelectorAll('.wrapper .sidebar ul li');
+document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll('.wrapper .sidebar ul li');
 
-// Add click event listener to each item
-listItems.forEach(item => {
-    item.addEventListener('click', function () {
-        // Remove 'active' class from all items
-        listItems.forEach(li => li.classList.remove('active'));
+    menuItems.forEach(item => {
+        item.addEventListener('click', function () {
+            // Remove "active" class from all items
+            menuItems.forEach(i => i.classList.remove('active'));
 
-        // Add 'active' class to the clicked item
-        this.classList.add('active');
+            // Add "active" class to the clicked item
+            this.classList.add('active');
+        });
     });
 });
