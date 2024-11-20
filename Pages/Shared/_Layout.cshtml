@@ -39,7 +39,7 @@
                             </ul>
                         </div>
                     }
-                    else
+                    else if (User.IsInRole("department") || User.IsInRole("warehouse"))
                     {
                         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                             <ul class="navbar-nav flex-grow-1">
@@ -64,30 +64,33 @@
 
     @if (SignInManager.IsSignedIn(User))
     {
-        <div class="wrapper">
-            <div class="sidebar">
-            <ul>
-                <li>
-                    <a asp-area="" asp-page="/Index">
-                        <i class="fa-solid fa-inbox"></i>
-                        <span>Mailbox</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/ComposeMail?Sender=@User.Identity.Name">
-                        <i class="fa-solid fa-pen"></i>
-                        <span>Write</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/SentMail">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>Sent</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+        if (User.IsInRole("admin") || User.IsInRole("department") || User.IsInRole("warehouse"))
+        {
+            <div class="wrapper">
+                <div class="sidebar">
+                    <ul>
+                        <li>
+                            <a asp-area="" asp-page="/Index">
+                                <i class="fa-solid fa-inbox"></i>
+                                <span class="ps-2">Mailbox</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/ComposeMail?Sender=@User.Identity.Name">
+                                <i class="fa-solid fa-pen"></i>
+                                <span class="ps-2">Write</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/SentMail">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span class="ps-2">Sent</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
     }
 
     <div class="container">
